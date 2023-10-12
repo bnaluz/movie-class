@@ -1,8 +1,9 @@
-
-
 class Movie {
   constructor(title, duration, rating, cast = []) {
-    (this.title = title), (this.duration = duration), (this.rating = rating), (this.cast = cast);
+    (this.title = title),
+      (this.duration = duration),
+      (this.rating = rating),
+      (this.cast = cast);
   }
 
   isLong() {
@@ -14,19 +15,23 @@ class Movie {
   }
 
   updateRating(rating) {
-    this.rating = rating;
+    if (typeof rating !== 'number') {
+      throw new TypeError('Rating must be a number.');
+    } else {
+      this.rating = rating;
+    }
   }
 
   addActor(actor) {
-    this.cast.push(actor)
+    this.cast.push(actor);
   }
   static actorInMovie(movie, actor) {
     // console.log("movie.cast, actor", movie.cast, actor)
-    for(let i = 0; i < movie.cast.length; i++) {
-      if(movie.cast[i]["name"] === actor) {
-        return true
+    for (let i = 0; i < movie.cast.length; i++) {
+      if (movie.cast[i]['name'] === actor) {
+        return true;
       } else {
-        return false
+        return false;
       }
     }
     // return movie.cast.includes(actor)
